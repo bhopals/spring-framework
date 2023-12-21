@@ -1,2 +1,0 @@
-# spring-framework
-Spring Framework
