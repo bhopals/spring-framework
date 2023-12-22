@@ -24,14 +24,8 @@ public class BeerController {
     public static final String BEER_PATH_ID = BEER_PATH + "/{beerId}";
 
     private final BeerService beerService;
-    
 
-    public BeerController(BeerService beerService) {
-		super();
-		this.beerService = beerService;
-	}
-
-	@PatchMapping(BEER_PATH_ID)
+    @PatchMapping(BEER_PATH_ID)
     public ResponseEntity updateBeerPatchById(@PathVariable("beerId")UUID beerId, @RequestBody Beer beer){
 
         beerService.patchBeerById(beerId, beer);
@@ -71,12 +65,13 @@ public class BeerController {
         return beerService.listBeers();
     }
 
+
     @GetMapping(value = BEER_PATH_ID)
     public Beer getBeerById(@PathVariable("beerId") UUID beerId){
 
-        System.out.println("Get Beer by Id - in controller");
+        log.debug("Get Beer by Id - in controller");
 
-        return beerService.getBeerById(beerId);
+        return beerService.getBeerById(beerId).orElseThrow(NotFoundException::new);
     }
 
 }

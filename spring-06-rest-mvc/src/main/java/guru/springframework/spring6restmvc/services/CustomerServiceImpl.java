@@ -16,29 +16,29 @@ public class CustomerServiceImpl implements CustomerService {
     private Map<UUID, Customer> customerMap;
 
     public CustomerServiceImpl() {
-    	
-        Customer customer1 = new Customer();
-		customer1.setId(UUID.randomUUID());
-		customer1.setName("Customer 1");
-		customer1.setVersion(1);
-		customer1.setCreatedDate(LocalDateTime.now());
-		customer1.setUpdateDate(LocalDateTime.now());
-                
+        Customer customer1 = Customer.builder()
+                .id(UUID.randomUUID())
+                .name("Customer 1")
+                .version(1)
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
+                .build();
 
-        Customer customer2 =  new Customer();
-        customer2.setId(UUID.randomUUID());
-        customer2.setName("Customer 2");
-        customer2.setVersion(1);
-		customer2.setCreatedDate(LocalDateTime.now());
-		customer2.setUpdateDate(LocalDateTime.now());
-		
+        Customer customer2 = Customer.builder()
+                .id(UUID.randomUUID())
+                .name("Customer 2")
+                .version(1)
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
+                .build();
 
-        Customer customer3 = new Customer();
-        customer3.setId(UUID.randomUUID());
-        customer3.setName("Customer 3");
-        customer3.setVersion(1);
-        customer3.setCreatedDate(LocalDateTime.now());
-        customer3.setUpdateDate(LocalDateTime.now());
+        Customer customer3 = Customer.builder()
+                .id(UUID.randomUUID())
+                .name("Customer 3")
+                .version(1)
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
+                .build();
 
         customerMap = new HashMap<>();
         customerMap.put(customer1.getId(), customer1);
@@ -69,21 +69,22 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer saveNewCustomer(Customer customer) {
 
-        Customer savedCustomer = new Customer();
-        savedCustomer.setId(UUID.randomUUID());
-        savedCustomer.setName(customer.getName());
-        savedCustomer.setVersion(1);
-        savedCustomer.setCreatedDate(LocalDateTime.now());
-        savedCustomer.setUpdateDate(LocalDateTime.now());
-      
+        Customer savedCustomer = Customer.builder()
+                .id(UUID.randomUUID())
+                .version(1)
+                .updateDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now())
+                .name(customer.getName())
+                .build();
+
         customerMap.put(savedCustomer.getId(), savedCustomer);
 
         return savedCustomer;
     }
 
     @Override
-    public Customer getCustomerById(UUID uuid) {
-        return customerMap.get(uuid);
+    public Optional<Customer> getCustomerById(UUID uuid) {
+        return Optional.of(customerMap.get(uuid));
     }
 
     @Override
