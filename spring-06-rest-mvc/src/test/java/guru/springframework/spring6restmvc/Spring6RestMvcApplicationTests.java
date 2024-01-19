@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class Spring6RestMvcApplicationTests {
-
+    // Context Loading
     @Test
     void contextLoads() {
     }
