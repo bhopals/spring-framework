@@ -1,6 +1,6 @@
 # SFG Beer Works - RESTful Brewery Service
 
-This project is to support learning about Restful APIs. 
+This project is to support learning about Restful APIs and deployment of the artifacts in cloud. 
 
 
 ### Commands
